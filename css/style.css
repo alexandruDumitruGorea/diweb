@@ -1,0 +1,1944 @@
+/* Global Styles */
+
+/* Variables CSS */
+
+/* Vamos a utilizar variables para facilitarnos la vida con los colores.
+    Y además permitiremos cambios de color en nuestro tema.*/
+:root {
+
+    /* COLORES */
+    --color-principal: #F15F2A;
+    --color-principal-acentuado: #E6A332;
+    --color-principal-texto: #29272e;
+    --color-secundario-texto: #616F7D;
+    --color-secundario-texto-acentuado: #CCCCCC;
+    --color-iconos: #A2A2A2;
+
+    /* TEXTOS */
+    --font-size-menu: 1rem;
+    --font-size-pantallazo-principal: 5.625rem;
+    --font-size-pantallazo: 4rem;
+    --font-size-intro-title: 1.25rem;
+    --font-size-title: 2.5rem;
+    --font-size-sub-title: 1.125rem;
+    --font-size-text: 0.875‬rem;
+    --font-size-button: 1.125rem;
+    --font-size-title-service: 1.5rem;
+    --font-size-title-blog: 1.5rem;
+    --font-size-title-suscribe: 2.25rem;
+    --font-size-logo-footer: 3rem;
+
+    /* PADDINGS */
+    --title-padding: 30px;
+}
+
+/* Importamos fuentes desde un archivo local */
+
+/* Roboto */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'), url('fuente/Roboto/Roboto-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url('fuente/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+/* CrimsonText */
+@font-face {
+    font-family: 'Crimson Text';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Crimson Text Regular'), local('CrimsonText-Regular'), url('fuente/CrimsonText/CrimsonText-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Crimson Text';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Crimson Text SemiBold'), local('CrimsonText-SemiBold'), url('fuente/CrimsonText/CrimsonText-SemiBold.ttf') format('truetype');
+}
+
+/* Merriweather Sans */
+@font-face {
+    font-family: 'Merriweather Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Merriweather Sans'), local('MerriweatherSans-Regular'), url('fuente/MerriweatherSans/MerriweatherSans-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Merriweather Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Merriweather Sans Bold'), local('MerriweatherSans-Bold'), url('fuente/MerriweatherSans/MerriweatherSans-Bold.ttf') format('truetype');
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html {
+    scrollbar-color: var(--color-principal-acentuado) rgb(252, 252, 252);
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(252, 252, 252);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-principal-acentuado);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* 'Crimson Text', serif */
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    color: var(--color-principal-texto);
+}
+
+.wrapper {
+    min-width: 320px;
+}
+
+/* Para seguir manteniendo compatibilidad de las etiquetas semánticas de HTML5 con IE */
+article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ------------------------- HEADER ----------------------- */
+
+.header {
+    background-color: #000;
+    width: 100%;
+    height: 80px;
+    /* Esto dejará nuestro menú siempre pegado arriba,
+        esta propiedad no altera el flujo de la página */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Este va a ser la propiedad que nos mantega el ancho máximo de nuestro contenido*/
+.container {
+    width: 100%;
+    max-width: 1396px;
+    margin: 0 auto;
+}
+
+.logo {
+    /* Este conjunto de propiedades nos dibuja un triángulo que no se 
+        desplazará fuera de su contenedor*/
+    width: 0;
+    height: 0;
+    border-top: 200px solid var(--color-principal-acentuado);
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    position: absolute;
+    float: left;
+}
+
+/* Colocamos nuestra imágen */
+.logo-img {
+    width: 140px;
+    position: absolute;
+    top: -160px;
+    right: -80px;
+}
+
+.menu-toggle {
+    position: absolute;
+	display: none;
+	right: 30px;
+	top: 20px;
+	width: 35px;
+	z-index: 25;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    color: var(--color-principal-acentuado);
+}
+
+.menu-toggle:before,
+.menu-toggle:after {
+  background-color: currentColor;
+  content: '';
+  display: block;
+  height: 4px;
+  transition: all 200ms ease-in-out;
+}
+.menu-toggle:before {
+  box-shadow: 0 10px 0 currentColor;
+  margin-bottom: 16px;
+}
+.menu-toggle:checked:before {
+  box-shadow: 0 0 0 currentColor;
+  transform: translateY(10px) rotate(45deg);
+}
+.menu-toggle:checked:after{
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.main-nav {
+    float: right;
+}
+
+.list-nav {
+    padding: 0;
+    line-height: 28px;
+}
+
+.list-nav-item {
+    display: inline-block;
+}
+
+/* El tamaño de los links serán los responsables de mostrar nuestro menú
+    por eso las propiedades se las damos a los "a" y no a los "li" */
+.list-nav-link {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: var(--font-size-menu);
+    padding: 10px 20px;
+    display: block;
+}
+
+/* Tenemos una modificación en un enlace entonces le damos los estilos pertinentes */
+.list-nav-link_reserva {
+    border: 1px solid var(--color-principal-acentuado);
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+.list-nav-link_reserva:hover {
+    color: #fff;
+    background-color: var(--color-principal-acentuado);
+    border-color: #fff;
+}
+
+/* ------------------------- Pantallazo Principal --------------------- */
+
+.pantallazoPrincipal {
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-image: url(../img/principal_reducida.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: var(--font-size-pantallazo-principal);
+    position: relative;
+}
+
+.pantallazoPrincipal > * {
+    position: relative;
+    z-index: 10;
+}
+
+.pantallazoPrincipal h1 {
+    font-family: "Crimson Text", serif;
+    color: #fff;
+    font-weight: 600;
+    padding-top: 12%;
+    padding-bottom: 30px;
+    font-size: 1em;
+}
+
+.pantallazoPrincipal p {
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: initial;
+    color: #fff;
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px 0;
+    display: none;
+}
+
+.pantallazoPrincipal .list-nav-link_reserva {
+    width: 280px;
+    margin: 0 auto;
+    display: none;
+}
+
+
+/* Tenemos una clase que nos crea dos rallitas a los lados de quien posea dicha clase */
+.intro-title {
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    color: var(--color-principal);
+    text-transform: uppercase;
+    font-size: var(--font-size-intro-title);
+    font-family: "Merriweather Sans", sans-serif;
+    font-weight: 400;
+}
+
+.intro-title::before,
+.intro-title::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background: currentColor;
+    top: 50%;
+}
+
+.intro-title::before {
+    right: 100%;
+}
+.intro-title::after {
+    left: 100%;
+}
+
+/* Tenemos una variante en la clase. Cambiamos los valores pertinentes. */
+.intro-title_pantallazo {
+    color: #fff;
+    font-size: 0.45em;
+}
+.intro-title_pantallazo::before,
+.intro-title_pantallazo::after {
+    color: var(--color-principal-acentuado);
+}
+
+/* Necesitamos otra modificación por culpa del diseño */
+.intro-title_margin {
+    margin-left: 50px;    
+}
+
+/* ---------------------------- SOBRE NOSOTROS -------------------- */
+.sobreNosotros {
+    padding-top: 40px;
+    clear: both;
+}
+
+.sobreNosotros-images, .sobreNosotros-text {
+    width: 50%;
+    float: left;
+}
+
+.images-container {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: 3%;
+}
+
+.images-container img {
+    float: left;
+    width: 48.387096%;
+}
+
+.images-container img:nth-child(2),
+.images-container img:nth-child(3) {
+    margin-left: 20px;
+}
+
+.images-container img:nth-child(2) {
+    margin-bottom: 20px;
+}
+
+.sobreNosotros-text {
+    width: 40%;
+    font-size: var(--font-size-text);
+}
+
+.title-container {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: "Crimson Text", serif;
+    font-weight: 400;
+    font-size: var(--font-size-title);
+    padding: var(--title-padding) 0;
+    color: var(--color-principal-texto);
+}
+
+.sub-title {
+    font-family: "Merriweather Sans", sans-serif;
+    font-weight: 700;
+    font-size: var(--font-size-sub-title);
+    color: var(--color-secundario-texto-acentuado);
+    margin-bottom: 30px;
+}
+
+.text-container p {
+    margin: 30px 0;
+    text-align: justify;
+}
+
+.text-container {
+    font-weight: 300;
+}
+
+.text-container p strong {
+    font-weight: 400;
+}
+
+.button {
+    width: 250px;
+    height: 45px;
+    font-family: "Merriweather Sans", sans-serif;
+    font-weight: 700;
+    font-size: var(--font-size-button);
+    text-transform: uppercase;
+    color: #fff;
+    background-color: var(--color-principal);
+    text-align: center;
+    line-height: 45px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* ---------------------- SERVICIOS ------------------ */
+.servicios {
+    padding-top: 40px;
+    clear: both;
+}
+
+.title-container_center {
+    text-align: center;
+}
+
+.servicios-container {
+    max-width: 924px;
+    margin: 0 auto;
+}
+
+.servicio-item {
+    width: 33.33%;
+    text-align: center;
+    float: left;
+    padding: 0 20px;   
+}
+
+.servicio-item-img {
+    width: 150px;
+    height: 150px;
+}
+
+.servicio-item-title {
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: var(--font-size-title-service);
+    font-weight: 700;
+    color: var(--color-principal-texto);
+    margin: 15px 0;
+}
+
+.servicio-item-description {
+    font-family: Roboto, sans-serif;
+    font-size: var(--font-size-text);
+    font-weight: 300;
+    color: var(--color-secundario-texto);
+}
+
+/* -------------------------- BLOG -------------------------- */
+
+.blog {
+    padding-top: 40px;
+    clear: both;
+}
+
+.entrance {
+    padding-bottom: 40px;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.entrance-item {
+    width: 44.8275862%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    position: relative;
+    display: inline-block;
+    margin-left: 2.5%;
+    margin-right: 5%;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.entrance-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.entrance-item-header {
+    height: 50px;
+}
+
+.entrance-results > * {
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 10px;
+    position: relative;
+}
+
+.entrance-results-views::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    top: 20%;
+    left: 115%;
+    height: 50%;
+    background: currentColor;
+}
+
+.entrance-results img {
+    width: 15px;
+    margin-right: 10px;
+}
+
+.entrance-item-img {
+    height: 300px;
+    background-size: cover;
+}
+
+.entrance-item:first-child .entrance-item-img {
+    background-image: url('../img/blog/gusta-pasta-reducido.jpg');
+    background-position: center;
+}
+
+.entrance-item:nth-child(2) .entrance-item-img {
+    background-image: url('../img/blog/terraza.jpg');
+    background-position: top center;
+}
+
+.entrance-item-desciption {
+    padding: 0 30px;
+    position: relative;
+    top: -20px;
+}
+
+.entrance-item-date {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background-color: var(--color-principal);
+    border-radius: 50%;
+    position: relative;
+    top: -20px;
+    font-family: "Crimson Text", serif;
+    font-size: 2.1875em;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    border: 4px solid #fff;
+    padding-top: 13px;
+}
+
+.entrance-item-date span {
+    display: block;
+    font-size: 1rem;
+    line-height: 5px;
+}
+
+.entrance-item-title {
+    font-family: "Crimson Text", serif;
+    font-size: var(--font-size-title-blog);
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: var(--color-principal-texto);
+}
+
+.entrance-item-text {
+    font-family: Roboto, sans-serif;
+    font-size: var(--font-size-text);
+    font-weight: 300;
+    color: var(--color-secundario-texto);
+    padding-bottom: 10px;
+}
+
+.entrance-item-link {
+    position: absolute;
+    right: 30px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    color: var(--color-principal-texto);
+}
+
+.nofloat {
+    clear: both;
+}
+
+.button_center {
+    margin: 0 auto;
+}
+
+/* -------------------------- SUSCRIBETE ---------------------- */
+
+.suscribete {
+    margin-top: 40px;
+    clear: both;
+    width: 100%;
+    height: 150px;
+    background-color: #fafafa;
+}
+
+.suscribete-container > * {
+    float: left;
+}
+
+.suscribete-container-img {
+    width: 20%;
+    height: 150px;
+}
+.suscribete-container-input {
+    width: 40%;
+}
+
+.suscribete-img {
+    height: 80%;
+    margin-top: 30px;
+}
+
+.suscribete-container-text {
+    margin-top: 50px;
+    width: 40%;
+}
+.suscribete-container-text p:first-child {
+    font-family: "Crimson Text", serif;
+    font-weight: 600;
+    font-size: var(--font-size-title-suscribe);
+    margin: 0;
+}
+
+.suscribete-container-text p:last-child {
+    font-weight: 300;
+    font-size: var(--font-size-text);
+    margin-top: 5px;
+    color: var(--color-secundario-texto);
+}
+
+.suscribete-container-input {
+    line-height: 150px;
+    position: relative;
+}
+
+.suscribete-input {
+    width: 300px;
+    height: 45px;
+    background-color: #efefef;
+    border: none;
+    position: relative;
+    padding: 10px 0 10px 20px;
+    color: var(--color-secundario-texto);
+}
+
+.suscribete-button {
+    position: absolute;
+    width: 40px;
+    top: 5px;
+    left: 255px;
+    cursor: pointer;
+}
+
+.suscribete-button img {
+    width: 35px;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+
+/* ---------------------------- FOOTER --------------------- */
+.footer {
+    width: 100%;
+    padding-top: 40px;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.logo-footer-container {
+    position: relative;
+}
+
+.logo-footer-container > * {
+    display: inline-block;
+}
+
+.logo-footer-container h1 {
+    position: relative;
+    top: -40px;
+    font-family: "Crimson Text", serif;
+    font-size: var(--font-size-logo-footer);
+    color: #fff;
+    padding-left: 20px;
+}
+
+.logo-footer-img {
+    height: 90px;
+}
+
+.logo-footer {
+    float: left;
+}
+.menu-footer-container {
+    float: right;
+}
+
+.menu-footer-item {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #2d2d2d;
+    border-radius: 50%;
+    margin-right: 25px;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+}
+
+.menu-footer-item img {
+    width: 20px;
+}
+
+.menu-footer-item:nth-child(2) img {
+    width: 10px;
+}
+
+.info-footer-container {
+    clear: both;
+    padding-top: 20px;
+    width: 70%;
+    margin: 0 auto;
+    border-top: 1px solid #ccc;
+}
+
+.info-footer-item {
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    position: relative;
+}
+
+.info-footer-item > * {
+    display: inline-block;
+}
+
+.info-footer-item img {
+    width: 20px;
+    position: relative;
+    top: 10px;
+}
+
+.info-footer-item:first-child img {
+    width: 30px;
+    top: 5px;
+}
+
+.info-footer-item p {
+    font-family: "Merriweather Sans", sans-serif;
+    padding-left: 10px;
+    color: #fff;
+}
+
+.info-footer-item p span {
+    font-family: Roboto, sans-serif;
+}
+
+.copy-right {
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+}
+
+/* ------------------------------- BUTTON UP PAGE ---------------- */
+
+.up {
+    position: fixed;
+    z-index: 20;
+    top: 90%;
+    right: 5%;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-principal);
+    border: 4px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 38px;
+    font-size: 36px;
+    color: #fff;
+    transform: rotate(-90deg);
+    display: none;
+}
+
+/* ---------------------------------- PAGES INTRO -------------------- */
+
+.pantallazo {
+    width: 100%;
+    height: 400px;
+    background-image: url(../img/introducciones/introduccionx400.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.pantallazo::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.pantallazo > * {
+    position: relative;
+    z-index: 10;
+}
+
+.pantallazo h1 {
+    font-size: var(--font-size-pantallazo);
+    font-family: "Crimson Text", serif;
+    color: #fff;
+    font-weight: 600;
+    padding-top: 8%;
+    padding-bottom: 20px;
+}
+
+.pantallazo .underline {
+    margin: 0 auto;
+    width: 6px;
+    height: 6px;
+    border: 0.5px solid #fff;
+    border-radius: 50%;
+}
+
+.pantallazo .underline::before,
+.pantallazo .underline::after {
+    content: '';
+    width: 100px;
+    height: 1px;
+    top: 40%;
+    background-color: #fff;
+    position: absolute;
+}
+
+.pantallazo .underline::before {
+    right: 100%;
+    margin-right: 10px;
+}
+
+.pantallazo .underline::after {
+    margin-left: 10px;
+}
+
+.pantallazo .tagline {
+    color: var(--color-secundario-texto-acentuado);
+    font-family: "Merriweather Sans", sans-serif;
+    text-transform: initial;
+    font-size: var(--font-size-text);
+}
+
+/* ----------------------------------- INSTALACIONES --------------------------- */
+
+.instalaciones {
+    padding-top: 40px;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.instalaciones-item {
+    width: 44.8275862%;
+    height: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    position: relative;
+    float: left;
+    margin: 0 2.5%;
+    margin-bottom: 40px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 50px;
+    color: #fff;
+}
+
+.instalaciones-item:nth-child(2) {
+    background-image: url(../img/instalaciones/cocina.jpg);
+}
+.instalaciones-item:nth-child(3) {
+    background-image: url(../img/instalaciones/comedor.jpg);
+}
+.instalaciones-item:nth-child(4) {
+    background-image: url(../img/instalaciones/recepcion.jpg);
+}
+.instalaciones-item:nth-child(5) {
+    background-image: url(../img/instalaciones/terraza.jpg);
+}
+
+.instalaciones-item > * {
+    position: relative;
+    z-index: 10;
+}
+
+.instalaciones-item::before {
+    content: '';
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    top: 2.5%;
+    left: 2.5%;
+    background-color: rgba(0, 0, 0, .7);
+    border: 2px solid #fff;
+}
+
+.instalaciones-item-title {
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: var(--font-size-title-suscribe);
+    margin-bottom: 20px;
+}
+
+.instalaciones-item-text {
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    font-size: var(--font-size-button);
+}
+
+.instalaciones-item-button {
+    width: 200px;
+    height: 45px;
+    margin: 40px auto;
+    line-height: 45px;
+    border: 2px solid #fff;
+    font-family: "Merriweather Sans", sans-serif;
+    font-weight: 700;
+    font-size: var(--font-size-button);
+    cursor: pointer;
+}
+
+.instalaciones-item-button:hover {
+    background-color: var(--color-principal);
+    border-width: 1px;
+}
+
+/* ------------------------------ PERSONAL ------------------------- */
+
+.personal {
+    clear: both;
+    padding-top: 40px;
+}
+
+.title_lowcase, .sub-title_lowcase {
+    text-transform: initial;
+}
+
+.sub-title_minWidth {
+    max-width: 668px;
+    margin: 0 auto;
+}
+
+.personal-item-container {
+    margin-top: 50px;
+    padding-bottom: 40px;
+}
+
+.personal-item-container_minWidth {
+    max-width: 668px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.personal-item-container_minWidth .personal-item:nth-child(odd) {
+    margin-right: 8.982%;
+}
+
+.personal-item-container_mediumWidth {
+    max-width: 1036px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.personal-item-container_maxWidth {
+    max-width: 1276px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.personal-item-container_maxWidth .personal-item {
+    margin-right: 1.5%;
+}
+
+.personal-item-container_maxWidth .personal-item:last-child {
+    margin-right: 0;
+}
+
+.personal-item {
+    text-align: center;
+    display: inline-block;
+}
+
+.personal-item-container_minWidth .personal-item {
+    width: 44.91017964%;
+}
+.personal-item-container_mediumWidth .personal-item {
+    width: 28.9575289%;
+}
+.personal-item-container_maxWidth .personal-item {
+    width: 23.51097178%;
+}
+
+.personal-item_principal {
+    transform: scale(1.1);
+    margin: 0 5%;
+}
+
+.personal-item-img-container {
+    position: relative;
+}
+
+.personal-item-img-container::before {
+    content: '';
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    left: 5%;
+    bottom: 5px;
+    border-radius: 50%;
+    background-color: none;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.personal-item-img-container_principal::before {
+    background-color: var(--color-principal);
+    border: none;
+}
+
+.personal-item-img {
+    position: relative;
+    z-index: 10;
+    max-height: 391px;
+}
+
+.personal-item-name {
+    margin-top: 20px;
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 1.375em;
+    color: var(--color-principal);
+}
+
+.personal-fin {
+    width: 100%;
+    text-align: center;
+    font-family: "Crimson Text", serif;
+    font-size: 2.25em;
+    margin: 0;
+}
+
+/* ----------------------------- CARTA -------------------------- */
+
+.carta {
+    margin-top: 40px;
+}
+
+.img-container {
+    margin-top: 100px;
+    width: 100%;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-container .img {
+    width: 100%;
+    height: 50%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 60% 50%;
+    position: relative;
+    top: 51%;
+}
+
+.carta-item:nth-child(2) .img-container .img {
+    background-image: url('../img/carta/plato1.png');
+}
+
+.carta-item:nth-child(3) .img-container .img {
+    background-image: url('../img/carta/plato2.png');
+}
+
+.carta-item:nth-child(4) .img-container .img {
+    background-image: url('../img/carta/plato3.png');
+}
+
+.text-container {
+    margin-top: 40px;
+}
+
+.historia, .ingredientes {
+    width: 49.28366762%;
+    margin: 0 auto;
+}
+
+.historia > p, .ingredientes > p {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    color: var(--color-principal-texto);
+}
+
+.historia > p:first-child, .ingredientes > p:first-child {
+    border-bottom: 1px solid var(--color-secundario-texto-acentuado);
+    padding: 5px 0;
+    color: var(--color-secundario-texto-acentuado);
+    font-size: 14px;
+}
+
+.menu-desgustacion {
+    margin-top: 40px;
+}
+
+.menu-desgustacion-item {
+    width: 28.6532951%;
+    max-width: 400px;
+    float: left;
+    margin-bottom: 40px;
+}
+
+.menu-desgustacion-item:nth-child(2) {
+    margin: 0 6.53352435%;
+}
+
+.menu-desgustacion-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    padding-top: 70%;
+}
+
+.menu-desgustacion-item:nth-child(1) .menu-desgustacion-img {
+    background-image: url('../img/carta/menu-cuore.jpg');
+}
+
+.menu-desgustacion-item:nth-child(2) .menu-desgustacion-img {
+    background-image: url('../img/carta/menu-caprino.jpg');
+}
+
+.menu-desgustacion-item:nth-child(3) .menu-desgustacion-img {
+    background-image: url('../img/carta/menu-focaccedueterre.jpg');
+}
+
+.menu-desgustacion-text {
+    text-align: center;
+}
+
+.menu-desgustacion-text p:nth-child(1) {
+    color: var(--color-principal);
+    font-size: var(--font-size-title-service);
+}
+
+.menu-desgustacion-text p:nth-child(2) {
+    border-bottom: 1px solid var(--color-secundario-texto-acentuado);
+    padding: 5px 0;
+    color: var(--color-secundario-texto-acentuado);
+    font-size: 14px;
+}
+
+.menu-desgustacion-text ul li {
+    position: relative;
+    text-align: left;
+    padding: 8px 0;
+}
+
+.menu-desgustacion-text ul li::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    left: -20px;
+    background-color: var(--color-principal);
+    border-radius: 50%;
+    top: 12px;
+}
+
+/* ----------------------------- RESERVA ------------------------- */
+
+.reserva {
+    padding-top: 40px;
+}
+
+#reserva {
+    position: absolute;
+    top: 40%;
+}
+
+.reserva-container {
+    margin-top: 50px;
+    width: 100%;
+    height: 600px;
+    background-image: url(../img/contacto/local.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.reserva-form {
+    width: 668px;
+    height: 640px;
+    background-color: #000;
+    position: relative;
+    top: -20px;
+    left: 15%;
+}
+
+.form {
+    width: 548px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.form-title {
+    font-family: "Crimson Text", serif;
+    font-size: 3em;
+    color: #fff;
+}
+
+.form-title.intro-title::before,
+.form-title.intro-title::after {
+    color: var(--color-principal);
+}
+
+.form-title-tagline {
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 0.875em;
+    margin: 0;
+    color: var(--color-secundario-texto-acentuado);
+}
+
+.form-title-tagline strong {
+    font-family: Roboto, sans-serif;
+    color: var(--color-principal);
+}
+
+.form-data {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.form-data-item {
+    width: 47%;
+    float: left;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.form-data-item:nth-child(2n) {
+    float: right;
+}
+
+.form-data-label {
+    position: absolute;
+    line-height: 40px;
+    width: 40px;
+    border-right: 1px solid #ccc;
+}
+
+.form-data-label img {
+    width: 20px;
+    position: relative;
+    top: 5px;
+}
+
+.icono-email {
+    width: 25px !important;
+}
+.icono-tel {
+    width: 15px !important;
+    top: 7px !important;
+}
+.icono-persona {
+    width: 13px !important;
+    top: 8px !important;
+}
+
+.form-data-input {
+    width: 100%;
+    height: 40px;
+    padding-left: 50px;
+    background-color: #444444;
+    border: none;
+    color: #fff;
+}
+
+.form-data-item_fullWidth {
+    width: 100%;
+    margin: 0;
+    clear: both;
+}
+
+.form-data-item_fullWidth textarea {
+    background-color: #444444;
+    width: 100%;
+    height: 70px;
+    border: none;
+    color: #fff;
+    padding: 10px;
+}
+
+/* ------------------------ FORMULARIO ------------------------------- */
+
+.formulario {
+    margin-top: 50px;
+}
+
+.formulario-container {
+    width: 57.3065902%;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 4px solid #dfdfdf;
+    padding: 40px;
+}
+
+.formulario .form-data-item {
+    float: none;
+    width: 100%;
+}
+
+.formulario .form-data-input, .formulario .form-data-item_fullWidth textarea {
+    background-color: #f6f6f6;
+    color: #000;
+}
+
+.formulario .form-data-item_fullWidth textarea {
+    height: 185px;
+    margin-bottom: 40px;
+}
+
+.formulario .form-data-label .icono-nombre {
+    left: 7px;
+}
+
+.formulario .form-data-label .icono-email {
+    left: 5px;
+}
+
+.formulario .form-data-label .icono-tel {
+    left: 10px;
+}
+
+/* ------------------------ MEDIA QUERIES ----------------------------*/
+
+@media screen and (max-width: 1396px) {
+    .main-nav {
+        margin-right: 2%;
+    }
+    .images-container {
+        margin-top: 9%;
+    }
+    .images-container img {
+        width: 45%;
+    }
+    .logo-footer {
+        margin-left: 2%;
+    }
+    .menu-footer-container {
+        margin-right: 2%;
+    }
+    .menu-desgustacion-container {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .images-container {
+        margin-top: 14%;
+    }
+    .entrance-item {
+        margin-right: 2.5%;
+    }
+    .info-footer-container {
+        width: 100%;
+    }
+    .historia, .ingredientes {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    :root {
+        --font-size-pantallazo-principal: 4rem;
+        --font-size-logo-footer: 2.5rem;
+    }
+    .logo {
+        border-width: 150px;
+    }
+    .logo-img {
+        width: 120px;
+        top: -140px;
+        right: -70px;
+    }
+    .suscribete-container > * {
+        float: none;
+        display: block;
+    }
+    .suscribete-container-img {
+        display: none;
+    }
+    .suscribete-container-text {
+        width: 100%;
+        margin-top: 0;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .suscribete-container-input {
+        line-height: initial;
+        margin: 0 auto;
+    }
+    .suscribete-input {
+        width: 100%;
+    }
+    .suscribete-button {
+        top: 10px;
+        left: 88%;
+    }
+
+    .reserva-form {
+        left: 0;
+        margin: 0 auto;
+    }
+
+    .menu-desgustacion-container {
+        width: 400px;
+    }
+
+    .menu-desgustacion-item {
+        min-width: 400px;
+        display: block;
+    }
+
+    .menu-desgustacion-item:nth-child(2) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 996px) {
+    :root {
+        --font-size-title-service: 1.375rem;
+        --font-size-text: 0.875rem;
+        --font-size-intro-title: 1.125rem;
+        --font-size-title: 2.25rem;
+        --font-size-sub-title: 1rem;
+        --font-size-button: 1rem;
+        --font-size-menu: 1.5rem;
+        --font-size-title-suscribe: 1.5rem;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .header {
+        height: 70px;
+    }
+
+    .pantallazoPrincipal {
+        height: calc(100vh - 70px);
+    }
+
+    .pantallazoPrincipal h1 {
+        padding-top: 20%;
+    }
+
+    .logo {
+        border-width: 0;
+        width: 60px;
+        height: 60px;
+    }
+
+    .logo-img {
+        position: relative;
+        width: 100%;
+        top: 10px;
+        left: 30px;
+        z-index: 100;
+    }
+
+    .main-nav {
+        position: absolute;
+        right: 0;
+        margin-right: 0;
+        background-color: #000;
+        height: 100vh;
+        width: 100vw;
+        opacity: 0;
+        transform: translateX(100vw);
+        transition: transform .3s,
+                    opacity .3s;
+    }
+
+    .list-nav {
+        text-align: center;
+        width: 60%;
+        margin: 0 auto;
+        transform: translateY(45%);
+    }
+
+    .list-nav .list-nav-link_reserva {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .list-nav .list-nav-item {
+        display: block;
+        margin-bottom: 2%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+    
+    .menu-toggle:checked ~ .main-nav {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .sobreNosotros-images {
+        display: none;
+    }
+
+    .sobreNosotros-text {
+        float: none;
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .title-container {
+        text-align: center;
+    }
+
+    .intro-title_margin {
+        margin-left: 0;
+    }
+
+    .servicio-item-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .entrance-item {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    .entrance-item:nth-child(2n) {
+        margin-right: auto;
+    }
+
+    .suscribete-container-input {
+        width: 60%;
+    }
+
+    .logo-footer, .menu-footer-container {
+        float: none;
+    }
+
+    .footer .container {
+        text-align: center;
+    }
+
+    .logo-footer {
+        margin-left: 0;
+    }
+
+    .menu-footer-container {
+        margin-right: 0;
+    }
+
+    .menu-footer {
+        padding: 0;
+    }
+
+    .info-footer-item {
+        width: 100%;
+        display: block;
+    }
+
+    .menu-footer .list-nav-link {
+        font-size: 16px;
+    }
+
+    .button {
+        margin: 0 auto;
+    }
+
+    .instalaciones-item {
+        height: 350px;
+        padding: 50px 30px;
+    }
+
+    .pantallazo h1 {
+        padding-top: 12%;
+    }
+
+    .personal-item-container:nth-child(2) .personal-item {
+        display: block;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    .personal-item-container:nth-child(2) .personal-item-img-container::before {
+        left: 0;
+    }
+
+    .form-title {
+        font-size: 2.125rem;
+    }
+
+    .reserva-form {
+        width: 600px;
+    }
+
+    .formulario-container {
+        width: 85%;
+    }
+
+    .img-container .img {
+        background-size: 90%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .instalaciones-item {
+        float: none;
+        margin: 0 auto;
+        width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .historia, .ingredientes {
+        width: 90%;
+    }
+
+    .img-container {
+        margin-top: 0;
+    }
+
+    .img-container .img {
+        background-size: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    :root {
+        --title-padding: 20px;
+    }
+
+    .pantallazoPrincipal h1 {
+        padding-top: 30%;
+        padding-bottom: 0;
+    }
+
+    .list-nav {
+        width: 100%;
+    }
+
+    .servicio-item {
+        float: none;
+        margin: 0 auto;
+        padding: 0;
+        padding-top: 20px;
+        width: 95%;
+    }
+
+    .suscribete-button {
+        left: 85%;
+    }
+
+    .menu-footer .list-nav-item {
+        display: block;
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .sub-title_minWidth {
+        max-width: 500px;
+    }
+
+    .personal-item {
+        display: block;
+        margin: 0 auto;
+        width: 80% !important;
+        margin-top: 50px;
+    }
+
+    .personal-item-container_minWidth .personal-item:nth-child(odd) {
+        margin: 0 auto;
+    }
+
+    .personal-item-img-container::before {
+        left: 15% !important;
+    }
+
+    .personal-fin {
+        font-size: 20px;
+    }
+
+    .pantallazo h1 {
+        padding-top: 18%;
+    }
+
+    .form {
+        width: 90%;
+        padding: 20px 0;
+    }
+
+    .reserva-form {
+        width: 100%;
+        height: 100%;
+    }
+
+    .reserva-container {
+        height: 100%;
+        background-image: none;
+    }
+
+    .form-data-item {
+        float: none;
+        display: block;
+        width: 100%;
+    }
+
+    .formulario {
+        margin-top: 20px;
+    }
+
+    .img-container {
+        height: 400px;
+    }
+
+    .img-container .img {
+        background-size: 100% 40%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    :root {
+        --font-size-pantallazo-principal: 2.25rem;
+        --font-size-pantallazo: 2.25rem;
+        --font-size-menu: 1.125rem;
+        --font-size-intro-title: 1rem;
+        --font-size-title: 1.5rem;
+        --font-size-button: 0.875rem;
+        --font-size-title-blog: 1.375rem;
+        --font-size-logo-footer: 1.5rem;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    .pantallazoPrincipal {
+        background-position: 0 0;
+    }
+
+    .pantallazoPrincipal::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, .6);
+    }
+
+    .pantallazoPrincipal h1 {
+        padding-top: 30%;
+    }
+    
+    .pantallazoPrincipal p {
+        display: block;
+    }
+    
+    .pantallazoPrincipal .list-nav-link_reserva {
+        display: block;
+    }
+
+    .title-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .sobreNosotros-text {
+        width: 85%;
+    }
+
+    .entrance {
+        padding-bottom: 20px;
+    }
+
+    .entrance-item {
+        width: 90%;
+    }
+
+    .entrance-item-img {
+        height: 220px;
+    }
+
+    .entrance-item-date {
+        width: 60px;
+        height: 60px;
+        font-size: 1.7rem;
+        padding-top: 5px;
+    }
+
+    .entrance-item-desciption {
+        padding: 0 20px;
+    }
+
+    .suscribete-container-text {
+        width: 95%;
+    }
+
+    .suscribete-container-input {
+        width: 90%;
+    }
+
+    .suscribete-button {
+        left: 82%;
+    }
+
+    .logo-footer-img {
+        height: 50px;
+    }
+
+    .logo-footer-container h1 {
+        top: -20px;
+    }
+
+    .up {
+        width: 40px;
+        height: 40px;
+        line-height: 28px;
+    }
+
+    .pantallazo {
+        height: 250px;
+    }
+
+    .pantallazo h1 {
+        padding-top: 20%;
+    }
+
+    .pantallazo .tagline {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .instalaciones-item {
+        padding: 50px 20px;
+    }
+
+    .instalaciones-item-button {
+        margin: 20px auto;
+    }
+
+    .sub-title_minWidth {
+        max-width: 300px;
+    }
+
+    .personal-item-img-container::before {
+        left: 15% !important;
+    }
+
+    .form-title {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .formulario-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .form-title-tagline strong {
+        display: block;
+    }
+
+    .form-data-item {
+        margin-bottom: 30px;
+    }
+
+    .formulario .form-data-item_fullWidth textarea {
+        height: 120px;
+    }
+
+    .historia > p, .ingredientes > p {
+        text-align: justify;
+    }
+
+    .menu-desgustacion-container {
+        width: 100%;
+    }
+
+    .menu-desgustacion-item {
+        min-width: 100%;
+        display: block;
+    }
+
+    .img-container .img {
+        background-size: 110% 40%;
+    }
+
+    .text-container {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .instalaciones-item {
+        width: 100%;
+    }
+
+    .personal-item-img-container::before {
+        left: 0% !important;
+    }
+}
