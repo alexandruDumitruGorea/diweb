@@ -8,5 +8,6 @@
 </head>
 <body>
     <a href="Practica2-Restaurante/index.html">Práctica2-Restaurante</a>
+    <a href="Practica3-Arquitecto/index.html">Práctica3-Arquitecto</a>
 </body>
 </html>
