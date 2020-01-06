@@ -3092,3 +3092,9 @@ ul {
         min-width: 50%;
     }
 }
+
+@media screen and (max-width: 450px) {
+    .header-container.menu-active .menu-toggle {
+        top: 78px;
+    }
+}
