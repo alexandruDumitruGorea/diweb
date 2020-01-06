@@ -3097,4 +3097,12 @@ ul {
     .header-container.menu-active .menu-toggle {
         top: 78px;
     }
+
+    .slider-item:nth-child(1) {
+        background-position: right center;
+    }
+
+    .slider-item:nth-child(2) {
+        background-position: right center;
+    }
 }
