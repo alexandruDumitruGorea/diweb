@@ -1918,6 +1918,7 @@ ul {
 .colaborador-box {
     width: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .colaborador {
@@ -1940,6 +1941,13 @@ ul {
 .colaborador-item:nth-child(2) img {
     width: 100%;
     height: 50%;
+}
+
+.colaborador-box .llegan-control {
+    display: none;
+    transform: none;
+    top: 42%;
+    opacity: 0.05;
 }
 
 /* ======================================================================= *\
@@ -2766,6 +2774,10 @@ ul {
     }
 
     /* COLABORADOR */
+    .colaborador-box .llegan-control {
+        display: block;
+    }
+    
     .colaborador-item {
         min-width: 33.33%;
         justify-content: center;
@@ -3131,6 +3143,10 @@ ul {
         max-width: 320px;
     }
 
+    .experience-title {
+        text-align: left;
+    }
+
     .animal-item {
         height: 700px;
     }
@@ -3166,6 +3182,10 @@ ul {
 
     .compra-item {
         min-width: initial;
+    }
+
+    .colaborador-item {
+        min-width: 60%;
     }
 
 }
