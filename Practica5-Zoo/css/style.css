@@ -542,6 +542,7 @@ ul {
     display: block;
     color: #fff;
     font-weight: 300;
+    opacity: 1;
 }
 
 .copy-right {
@@ -2108,6 +2109,7 @@ ul {
 .info-subtitle {
     margin-bottom: 20px;
     line-height: 1.5em;
+    text-align: justify;
 }
 
 .info-box {
@@ -3105,4 +3107,65 @@ ul {
     .slider-item:nth-child(2) {
         background-position: right center;
     }
+
+    .experience-draw-1 {
+        height: 150px;
+    }
+
+    .experience-draw-1 .experience-svg {
+        top: -85%;
+    }
+
+    .experience-draw-2 {
+        width: 150px;
+        height: 150px;
+        right: -100px;
+        top: -75px;
+    }
+
+    .experience-img-container {
+        height: 350px;
+    }
+
+    .experience-text {
+        max-width: 320px;
+    }
+
+    .animal-item {
+        height: 700px;
+    }
+    
+    .animal-more {
+        height: 55px;
+    }
+
+    .animal-gallery-item {
+        min-width: 90%;
+    }
+
+    .intro-container {
+        height: 250px;
+    }
+
+    .intro-title::before {
+        font-size: 250%;
+    }
+
+    .llegan-slider-item {
+        background-size: cover;
+    }
+
+    .mision-item {
+        padding: 70px 0;
+    }
+
+    .mision-text {
+        padding: 0;
+        max-width: 300px;
+    }
+
+    .compra-item {
+        min-width: initial;
+    }
+
 }
