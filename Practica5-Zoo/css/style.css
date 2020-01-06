@@ -220,6 +220,14 @@ ul {
     line-height: 1.5em;
 }
 
+.is-opacity {
+    opacity: 1 !important;
+}
+
+.is-opacity_none {
+    opacity: 0 !important;
+}
+
 /* ======================================================================= *\
     HEADER
 \* ======================================================================= */
@@ -577,6 +585,7 @@ ul {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    transition: opacity .5s;
 }
 
 .slider-item:nth-child(1) {
@@ -1574,6 +1583,7 @@ ul {
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
+    position: relative;
 }
 
 .llegan-slider {
@@ -1583,25 +1593,36 @@ ul {
     position: relative;
     border-radius: 4px;
     display: flex;
+    transition: transform 0.25s;
 }
 
-.llegan-slider:hover .llegan-control {
+.llegan-content:hover .llegan-control {
     opacity: 1;
 }
 
 .llegan-slider-item {
     min-width: 100%;
     height: 100%;
-    background-image: url(../img/fauna/llegan/1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
 }
 
+.llegan1 {
+    background-image: url(../img/fauna/llegan/1.jpg);
+}
+.llegan2 {
+    background-image: url(../img/fauna/llegan/2.jpg);
+}
+.llegan3 {
+    background-image: url(../img/fauna/llegan/3.jpg);
+}
+
 .razon {
     position: absolute;
     overflow: hidden;
+    transition: height .25s;
 }
 
 .razon-text {
@@ -1618,6 +1639,7 @@ ul {
     text-transform: uppercase;
     font-weight: 700;
     position: relative;
+    text-align: center;
 }
 
 .razon-title::after {
