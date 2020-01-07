@@ -33,31 +33,67 @@ if (page == 'fauna') {
     let direction;
 
     next.addEventListener('click', function() {
-        direction = -1;
-        slider.style.justifyContent = 'flex-start';
+        direction = 1;
         slider.style.transform = 'translate(-100%)';
-    })
-    
+    });
+
     prev.addEventListener('click', function() {
-        if (direction == -1) {
-            slider.appendChild(slider.firstElementChild);
-            direction = 1;
-        }
-        slider.style.justifyContent = 'flex-end';
-        slider.style.transform = 'translate(100%)';
-    })
+        direction = -1;
+        slider.insertAdjacentElement("afterbegin", slider.lastElementChild);
+        slider.style.transition = 'none';
+        slider.style.transform = 'translate(-100%)';
+        setTimeout(() => {
+            slider.style.transition = 'all 0.5s';
+            slider.style.transform = 'translate(0%)';
+        });
+    });
 
     slider.addEventListener('transitionend', function() {
-        if (direction == -1) {
-            // slider.appendChild(slider.firstElementChild);
-        } else {
-            slider.appendChild(slider.lastElementChild);
+        if (direction === 1) {
+            slider.appendChild(slider.firstElementChild);
+            slider.style.transition = 'none';
+            slider.style.transform = 'translate(0)';
         }
 
-        slider.style.transition = 'none';
-        slider.style.transform = 'translate(0)';
         setTimeout(() => {
-            slider.style.transition = 'transform 0.25s';
+            slider.style.transition = 'all 0.5s';
+        })
+    }, false);
+}
+
+if (page == 'explicacion') {
+    let slider = document.querySelector('.explicacion-slider'),
+        next = document.querySelector('.next'),
+        prev = document.querySelector('.prev');
+
+    let direction;
+
+    next.addEventListener('click', function() {
+        console.log('jajaj');
+        direction = 1;
+        slider.style.transform = 'translate(-100%)';
+    });
+
+    prev.addEventListener('click', function() {
+        direction = -1;
+        slider.insertAdjacentElement("afterbegin", slider.lastElementChild);
+        slider.style.transition = 'none';
+        slider.style.transform = 'translate(-100%)';
+        setTimeout(() => {
+            slider.style.transition = 'all 0.5s';
+            slider.style.transform = 'translate(0%)';
         });
-    })
+    });
+
+    slider.addEventListener('transitionend', function() {
+        if (direction === 1) {
+            slider.appendChild(slider.firstElementChild);
+            slider.style.transition = 'none';
+            slider.style.transform = 'translate(0)';
+        }
+
+        setTimeout(() => {
+            slider.style.transition = 'all 0.5s';
+        })
+    }, false);
 }

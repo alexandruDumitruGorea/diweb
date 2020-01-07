@@ -1593,7 +1593,8 @@ ul {
     position: relative;
     border-radius: 4px;
     display: flex;
-    transition: transform 0.25s;
+    justify-content: flex-start;
+    transition: transform 0.5s;
 }
 
 .llegan-content:hover .llegan-control {
@@ -1607,6 +1608,7 @@ ul {
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    border-radius: 4px;
 }
 
 .llegan1 {
@@ -1825,6 +1827,196 @@ ul {
 }
 
 .instalaciones .btn {
+    margin-top: 20px;
+}
+
+/* ======================================================================= *\
+    EXPLICACIÓN ANIMAL
+\* ======================================================================= */
+.explicacion-container {
+    margin: var(--space) 0;
+    padding: 0 20px;
+}
+
+.explicacion {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.explicacion-item {
+    flex: 1;
+    max-width: 70%;
+}
+
+.explicacion-title {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.explicacion-slider-container {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+.explicacion-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform .5s;
+}
+
+.explicacion-slider-item {
+    height: 100%;
+    min-width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.explica1 {
+    background-image: url(../img/fauna/tigre/3.jpg);
+}
+.explica2 {
+    background-image: url(../img/fauna/tigre/1.jpg);
+}
+.explica3 {
+    background-image: url(../img/fauna/tigre/4.jpg);
+}
+
+.explicacion-control {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: .5;
+    transition: opacity .25s;
+}
+
+.explicacion-control:hover {
+    opacity: 1;
+}
+
+.explicacion-control .control {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    background-color: rgba(255,255,255,.25);
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.explicacion-control .control.next {
+    right: 0;
+}
+
+.explicacion-control .control.prev {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.explicacion-control .control-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.explicacion-intro {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.explicacion-desc {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.explicacion-amenaza {
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+    background-image: url(../img/fauna/tigre/extincion.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.explicacion-item_sticky {
+    flex: 1;
+    max-width: 30%;
+    margin-left: 30px;
+}
+
+.explicacion-content {
+    background-color: #3d6b00;
+    border-radius: 4px;
+    position: sticky;
+    top: 150px;
+    overflow: hidden;
+}
+
+.explicacion-data {
+    padding: 30px 40px;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+.explicacion-data-img {
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.explicacion-data-title:nth-child(1) .explicacion-data-img {
+    background-image: url(../img/iconos/habitat.svg);
+}
+
+.explicacion-data-title:nth-child(3) .explicacion-data-img {
+    background-image: url(../img/iconos/dieta.svg);
+}
+
+.explicacion-data-title:nth-child(5) .explicacion-data-img {
+    background-image: url(../img/iconos/gestacion.svg);
+}
+
+.explicacion-data-title:nth-child(7) .explicacion-data-img {
+    background-image: url(../img/iconos/crias.svg);
+}
+
+.explicacion-data-title:nth-child(9) .explicacion-data-img {
+    background-image: url(../img/iconos/vida.svg);
+}
+
+.explicacion-data-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.explicacion-data-title span {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.explicacion-data-desc {
+    margin-bottom: 20px;
+}
+
+.explicacion-data-desc:last-child {
+    margin-bottom: 0;
+}
+
+.explicacion-container .btn {
     margin-top: 20px;
 }
 
@@ -2227,6 +2419,80 @@ ul {
     padding: 5px;
 }
 
+/* NORMAS */
+.norma-container {
+    margin: var(--space) 0;
+    padding: 0 20px;
+}
+
+.norma {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.norma-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.norma-intro {
+    width: 100%;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.norma-item {
+    flex: 1 0 40%;
+    max-width: 50%;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.norma-item:nth-child(even) {
+    margin-left: var(--space);
+}
+
+.norma-item:nth-child(16),
+.norma-item:nth-child(18) {
+    margin-left: 0;
+    margin-right: var(--space);
+}
+
+.norma-img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--marron-oscuro);
+    margin-right: 20px;
+}
+
+.norma-img img {
+    width: 100%;
+}
+
+.norma-desc {
+    flex: 1;
+}
+
+/* MAPA */
+
+.map-container {
+    margin: var(--space) 0;
+}
+
+.map {
+    width: 100%;
+    height: 500px;
+}
+
+.map  iframe {
+    width: 100%;
+    height: 100%;
+}
+
+
 /* ======================================================================= *\
     MEDIA QUERYES
 \* ======================================================================= */
@@ -2387,6 +2653,15 @@ ul {
         max-width: 500px;
     }
 
+    /* EXPLICACION */
+    .explicacion-amenaza {
+        height: 180px;
+    }
+
+    .explicacion-slider-container {
+        height: 450px;
+    }
+
     /* SOBRE NOSOTROS */
     .mision-item {
         padding: 50px 0;
@@ -2411,12 +2686,31 @@ ul {
     .colaborador-item:nth-child(2) img {
         width: initial;
     }
+
+    /* CONTACTO */
+    .map {
+        height: 400px;
+    }
 }
 
 @media screen and (max-width: 1050px) {
     /* NUESTRA FAUNA */
     .llegan-content {
         height: 650px;
+    }
+
+    /* EXPLICACION */
+    .explicacion {
+        flex-direction: column;
+    }
+
+    .explicacion-item {
+        max-width: 100%;
+    }
+
+    .explicacion-item_sticky {
+        margin-left: 0;
+        margin-top: 20px;
     }
 
     /* SOBRE NOSOTROS */
@@ -2768,6 +3062,11 @@ ul {
         height: 560px;
     }
 
+    /* EXPLICACION */
+    .explicacion-slider-container {
+        height: 400px;
+    }
+
     /* CONTACTO */
     .contacto {
         flex-direction: column;
@@ -2788,6 +3087,25 @@ ul {
 
     .form .btn {
         margin: 0 auto;
+    }
+
+    .norma {
+        flex-direction: column;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .norma-item {
+        max-width: 100%;
+        text-align: justify;
+    }
+
+    .norma-item:nth-child(even) {
+        margin-left: 0;
+    }
+
+    .norma-item:nth-child(16), .norma-item:nth-child(18) {
+        margin-right: 0;
     }
 
     /* COMPRA TICKET */
@@ -3114,6 +3432,54 @@ ul {
         height: 250px;
     }
 
+    /* EXPLICACION */
+    .explicacion-slider-container {
+        height: 300px;
+    }
+
+    .explicacion-amenaza {
+        height: 100px;
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .explicacion-amenaza:hover::before{
+        background-color: rgba(0,0,0,.1);
+    }
+
+    .explicacion-amenaza::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.05);
+    }
+
+    .explicacion-amenaza:hover::after {
+        color: rgba(255, 255, 255, 1);
+        background-color: rgba(0,0,0,.5);
+    }
+    .explicacion-amenaza::after {
+        transition: all .25s;
+        content: '+';
+        font-size: 36px;
+        text-align: center;
+        line-height: 40px;
+        color: rgba(255, 255, 255, .6);
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0,0,0,.2);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
     /* CONTACTO */
     .info-box .item-img img {
         width: 35px;
@@ -3121,6 +3487,15 @@ ul {
     
     .item:nth-child(2) .item-text p:last-child {
         font-size: 20px;
+    }
+
+    .norma-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .map {
+        height: 300px;
     }
 
     /* COLABORADOR */
@@ -3208,6 +3583,10 @@ ul {
 
     .colaborador-item {
         min-width: 60%;
+    }
+
+    .norma-item {
+        align-items: center;
     }
 
 }
