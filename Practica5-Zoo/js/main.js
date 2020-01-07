@@ -69,7 +69,6 @@ if (page == 'explicacion') {
     let direction;
 
     next.addEventListener('click', function() {
-        console.log('jajaj');
         direction = 1;
         slider.style.transform = 'translate(-100%)';
     });
@@ -97,3 +96,20 @@ if (page == 'explicacion') {
         })
     }, false);
 }
+
+// BOTÓN up
+let up = document.getElementById('up');
+
+function showUP() {
+    if (window.scrollY >= window.innerHeight) {
+        up.classList.add('is-opacity');
+    } else {
+        up.classList.remove('is-opacity');
+    }
+}
+
+function main() {
+    showUP();
+}
+    
+window.addEventListener('scroll', main);
