@@ -3272,7 +3272,8 @@ ul {
     }
 
     .header-container.menu-active .menu-toggle {
-        top: 62px;
+        top: 45px;
+        right: 40px;
     }
 
     /* INDEX */
