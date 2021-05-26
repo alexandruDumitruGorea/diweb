@@ -97,4 +97,8 @@ self.addEventListener( 'fetch', e => {
 
 });
 
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.prompt();
+});
+
 
